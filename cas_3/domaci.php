@@ -2,7 +2,20 @@
 
 $naslov = "Postani Progamer";
 
-$nav = ["Glavna", "O nama", "Kontakt"];
+$nav = [
+	[
+		"stranica" => "Glavna",
+		"adresa" => "home.php"
+	],
+	[
+		"stranica" => "O nama",
+		"adresa" => "about_us.php"
+	],
+	[
+		"stranica" => "Kontakt",
+		"adresa" => "contact.php"
+	],
+];
 
 ?>
 
@@ -17,9 +30,9 @@ $nav = ["Glavna", "O nama", "Kontakt"];
 <body>
 	<h1><?= $naslov ?></h1>
 	<nav>
-		<a href="home.php"><?= $nav[0] ?></a>
-		<a href="about_us.php"><?= $nav[1] ?></a>
-		<a href="contact.php"><?= $nav[2] ?></a>
+		<a href=<?= $nav[0]["adresa"] ?>><?= $nav[0]['stranica'] ?></a>
+		<a href=<?= $nav[1]["adresa"] ?>><?= $nav[1]['stranica'] ?></a>
+		<a href=<?= $nav[2]["adresa"] ?>><?= $nav[2]['stranica'] ?></a>
 	</nav>
 
 	<footer>
