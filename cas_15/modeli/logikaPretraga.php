@@ -18,6 +18,7 @@ if ($rezultat->num_rows >= 1) {
 
 $proizvodi = $rezultat->fetch_all(MYSQLI_ASSOC);
 
+
 foreach ($proizvodi as $proizvod) {
-	echo $proizvod['ime'];
+	echo "<br>" . $proizvod['ime'];
 }
