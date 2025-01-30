@@ -8,10 +8,6 @@ require_once "modeli/baza.php";
 
 $idProizvoda = $_GET['id'];
 
-// http://localhost:8888/php-16/proizvod.php?id=1 -> SELECT * FROM proizvodi WHERE id = 1
-// http://localhost:8888/php-16/proizvod.php?id=5 -> SELECT * FROM proizvodi WHERE id = 5
-
-
 $rezultat = $baza->query(" SELECT * FROM proizvodi WHERE id = $idProizvoda ");
 
 if ($rezultat->num_rows == 0) {
@@ -20,14 +16,10 @@ if ($rezultat->num_rows == 0) {
 
 $proizvod = $rezultat->fetch_assoc();
 
-// $proizvod = [ 
-//     "id"=> "2" 
-//     "ime"=> "iPhone 11" 
-//     "opis"=> "iPhone 11 kao nov, baba koristila za FB" 
-//     "cena"=> "989.99" 
-//     "slika"=> "iPhone11.jpg" 
-//     "kolicina"=> "22"
-// ]
+if (session_status() == PHP_SESSION_NONE) {
+	session_start();
+}
+
 
 ?>
 
@@ -56,10 +48,21 @@ $proizvod = $rezultat->fetch_assoc();
 		<?php if ($proizvod['kolicina'] == 0): ?>
 			<p>Nema na stanju</p>
 		<?php else: ?>
-			<p>Ima na stanju</p>
 		<?php endif; ?>
+		<p>Ima na stanju</p>
 
-		<a href="index.php">Vrati se nazad</a>
+		<?php if (isset($_SESSION['ulogovan'])): ?>
+
+			<form action="korpa.php" method="post">
+				<input type="number" name="kolicina" placeholder="Unesite kolicinu proizvoda">
+				<input type="hidden" name="id_proizvoda" value="<?= $proizvod['id'] ?>">
+				<button class="btn btn-primary">Dodaj u korpu</button>
+			</form>
+
+		<?php else: ?>
+			<a href="login.php" class="btn btn-primary">Klikni da se ulogujes kako bi dodao u korpu</a>
+		<?php endif ?>
+		<a href="index.php" class="btn btn-primary mt-3">Vrati se nazad</a>
 	</div>
 </body>
 

@@ -18,5 +18,6 @@ if (session_status() == PHP_SESSION_NONE) {
 			<a class="nav-link" href="login.php">Login</a>
 		<?php endif; ?>
 	</div>
+	<a class="nav-link" href="moja_korpa.php">Korpa</a>
 
 </div>
