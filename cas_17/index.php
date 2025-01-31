@@ -45,7 +45,10 @@ $proizvodi = $rezultat->fetch_all(MYSQLI_ASSOC);
 				<a class="btn btn-outline-primary" href="proizvod.php?id=<?= $proizvod['id'] ?>">Pogledaj proizvod</a>
 			</div>
 		<?php endforeach; ?>
+
+
 	</div>
+
 </body>
 
 </html>

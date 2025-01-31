@@ -26,7 +26,7 @@
 				<label for="examplePassword" class="form-label">Lozinka</label>
 				<input type="password" name="sifra" class="form-control" id="examplePassword">
 			</div>
-			<button class="btn btn-primary w-100">Uloguj me</button>
+			<button class="btn btn-primary w-100">Uloguj se</button>
 		</form>
 	</div>
 
